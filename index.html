@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Лицензии и атрибуция</title>
+  <title>Licenses & Attribution</title>
   <style>
     :root {
       --bg: #0b0f14;
@@ -28,7 +28,12 @@
       padding: 28px 16px 10px;
       max-width: 980px;
       margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      justify-content: space-between;
     }
+    .head-left { flex: 1; min-width: 240px; }
     h1 {
       margin: 0 0 6px;
       font-size: 22px;
@@ -38,6 +43,26 @@
       margin: 0;
       color: var(--muted);
       font-size: 14px;
+    }
+    .lang {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      user-select: none;
+    }
+    .lang button {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .lang button.active {
+      border-color: rgba(122,183,255,0.55);
+      background: rgba(122,183,255,0.14);
     }
     main {
       max-width: 980px;
@@ -91,47 +116,107 @@
       font-size: 12px;
     }
     .small { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    [data-lang] { display: none; }
+    [data-lang].show { display: block; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Лицензии и атрибуция</h1>
-    <p class="lead">Эта страница содержит атрибуцию для используемых голосов/датасетов (TTS). Обновляйте список по мере добавления новых голосов.</p>
+    <div class="head-left">
+      <h1 data-i18n="title">Licenses & Attribution</h1>
+      <p class="lead" data-i18n="lead">This page contains attribution for the voices/datasets (TTS) used in the app. Update it as you add new voices.</p>
+    </div>
+    <div class="lang" aria-label="Language">
+      <button id="btn-en" type="button" class="active">EN</button>
+      <button id="btn-ru" type="button">RU</button>
+    </div>
   </header>
 
   <main>
-    <section class="card" aria-label="Piper">
-      <div class="row">
-        <p class="title">Piper TTS — голоса (пример атрибуции)</p>
-        <span class="pill">Third‑party notices</span>
-      </div>
-      <ul>
-        <li>
-          Голос: <code>en_US-libritts-high</code> (Piper)
-          <br />Источник датасета: LibriTTS (OpenSLR SLR60) — <a href="http://www.openslr.org/60/" target="_blank" rel="noopener noreferrer">http://www.openslr.org/60/</a>
-          <br />Лицензия: Creative Commons Attribution 4.0 International (CC BY 4.0) — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by/4.0/</a>
-        </li>
-      </ul>
-      <p class="small">Примечание: если вы модифицировали модель/пак, добавьте пометку “Modified/Изменено” и дату.</p>
-    </section>
+    <!-- EN -->
+    <div data-lang="en" class="show">
+      <section class="card" aria-label="Piper">
+        <div class="row">
+          <p class="title">Piper TTS — voices (attribution examples)</p>
+          <span class="pill">Third‑party notices</span>
+        </div>
+        <ul>
+          <li>
+            Voice: <code>en_US-libritts-high</code> (Piper)
+            <br />Dataset source: LibriTTS (OpenSLR SLR60) — <a href="http://www.openslr.org/60/" target="_blank" rel="noopener noreferrer">http://www.openslr.org/60/</a>
+            <br />License: Creative Commons Attribution 4.0 International (CC BY 4.0) — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by/4.0/</a>
+          </li>
+        </ul>
+        <p class="small">Note: if you modified the model/package, add “Modified” and the date.</p>
+      </section>
 
-    <section class="card" aria-label="Как добавлять новые записи">
-      <div class="row">
-        <p class="title">Как добавить новый голос</p>
-        <span class="pill">Checklist</span>
-      </div>
-      <ul>
-        <li>Открой <code>MODEL_CARD</code> голоса и найди <code>License</code> и <code>URL</code>.</li>
-        <li>Если написано <code>See LICENSE file</code> — найди соответствующий <code>LICENSE</code> (локально/в источнике).</li>
-        <li>Добавь строку в этот список: имя голоса → источник → ссылка на лицензию.</li>
-      </ul>
-    </section>
+      <section class="card" aria-label="How to add new entries">
+        <div class="row">
+          <p class="title">How to add a new voice</p>
+          <span class="pill">Checklist</span>
+        </div>
+        <ul>
+          <li>Open the voice’s <code>MODEL_CARD</code> and find <code>License</code> and <code>URL</code>.</li>
+          <li>If it says <code>See LICENSE file</code>, locate the corresponding <code>LICENSE</code> (locally / in the source repo).</li>
+          <li>Add a line to this list: voice name → source → license link.</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- RU -->
+    <div data-lang="ru">
+      <section class="card" aria-label="Piper">
+        <div class="row">
+          <p class="title">Piper TTS — голоса (пример атрибуции)</p>
+          <span class="pill">Third‑party notices</span>
+        </div>
+        <ul>
+          <li>
+            Голос: <code>en_US-libritts-high</code> (Piper)
+            <br />Источник датасета: LibriTTS (OpenSLR SLR60) — <a href="http://www.openslr.org/60/" target="_blank" rel="noopener noreferrer">http://www.openslr.org/60/</a>
+            <br />Лицензия: Creative Commons Attribution 4.0 International (CC BY 4.0) — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by/4.0/</a>
+          </li>
+        </ul>
+        <p class="small">Примечание: если вы модифицировали модель/пак, добавьте пометку “Modified/Изменено” и дату.</p>
+      </section>
+
+      <section class="card" aria-label="Как добавлять новые записи">
+        <div class="row">
+          <p class="title">Как добавить новый голос</p>
+          <span class="pill">Checklist</span>
+        </div>
+        <ul>
+          <li>Открой <code>MODEL_CARD</code> голоса и найди <code>License</code> и <code>URL</code>.</li>
+          <li>Если написано <code>See LICENSE file</code> — найди соответствующий <code>LICENSE</code> (локально/в источнике).</li>
+          <li>Добавь строку в этот список: имя голоса → источник → ссылка на лицензию.</li>
+        </ul>
+      </section>
+    </div>
   </main>
 
   <footer>
-    Последнее обновление: <span id="updated"></span>
+    <span id="updatedLabel">Last updated:</span> <span id="updated"></span>
     <script>
-      document.getElementById('updated').textContent = new Date().toISOString().slice(0, 10);
+      const $ = (sel) => document.querySelector(sel);
+      const blocks = () => Array.from(document.querySelectorAll('[data-lang]'));
+
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        blocks().forEach(b => b.classList.toggle('show', b.getAttribute('data-lang') === lang));
+        $('#btn-en').classList.toggle('active', lang === 'en');
+        $('#btn-ru').classList.toggle('active', lang === 'ru');
+        $('#updatedLabel').textContent = (lang === 'ru') ? 'Последнее обновление:' : 'Last updated:';
+        document.title = (lang === 'ru') ? 'Лицензии и атрибуция' : 'Licenses & Attribution';
+      }
+
+      // default: EN, but remember choice
+      const saved = (window.location.hash === '#ru') ? 'ru' : (window.location.hash === '#en') ? 'en' : null;
+      setLang(saved || 'en');
+
+      $('#btn-en').addEventListener('click', () => { window.location.hash = 'en'; setLang('en'); });
+      $('#btn-ru').addEventListener('click', () => { window.location.hash = 'ru'; setLang('ru'); });
+
+      $('#updated').textContent = new Date().toISOString().slice(0, 10);
     </script>
   </footer>
 </body>
